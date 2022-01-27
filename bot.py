@@ -98,6 +98,11 @@ async def send_buying_details(ctx: Context):
     )
 
 
+@client.command(name='shop')
+async def _send_buying_details(ctx: Context):
+    await send_buying_details.invoke(ctx)
+
+
 async def wait():
     while True:
         tasks = [
@@ -359,6 +364,7 @@ async def wait():
 @client.event
 async def on_ready():
     print('Bot is online....')
+    await client.change_presence(status=discord.Status.online, activity=discord.Game(name=f"!buy | !shop"))
     # await auto_send_msg.start()
     await wait()
 
