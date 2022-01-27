@@ -30,8 +30,6 @@ def getEmbed(game: str, game_txt: str):
     embed = discord.Embed(color=randColor())
     embed.title = game
     embed.description = game_txt
-    embed.set_footer(
-        text='[Write your order number after payment]')
     return embed
 
 
@@ -98,6 +96,7 @@ async def send_buying_details(ctx: Context):
             )
         ]]
     )
+
 
 async def wait():
     while True:
@@ -178,7 +177,7 @@ async def wait():
                                     SelectOption(label='Paymes (Manuel Delivery)',
                                                  value='paymes'),
                                     SelectOption(label='Paypal (Manuel Delivery)',
-                                                value='paypal')
+                                                 value='paypal')
                                 ],
                                 custom_id='rust-cheat-select'
                             )
@@ -200,7 +199,7 @@ async def wait():
                                     SelectOption(label='Paymes (Manuel Delivery)',
                                                  value='paymes'),
                                     SelectOption(label='Paypal (Manuel Delivery)',
-                                                value='paypal')
+                                                 value='paypal')
                                 ],
                                 custom_id='valo-select'
                             )
@@ -222,7 +221,7 @@ async def wait():
                                     SelectOption(label='Paymes (Manuel Delivery)',
                                                  value='paymes'),
                                     SelectOption(label='Paypal (Manuel Delivery)',
-                                                value='paypal')
+                                                 value='paypal')
                                 ],
                                 custom_id='uni-select'
                             )
@@ -244,7 +243,7 @@ async def wait():
                                     SelectOption(label='Paymes (Manuel Delivery)',
                                                  value='paymes'),
                                     SelectOption(label='Paypal (Manuel Delivery)',
-                                                value='paypal')
+                                                 value='paypal')
                                 ],
                                 custom_id='r6-select'
                             )
@@ -266,7 +265,7 @@ async def wait():
                                     SelectOption(label='Paymes (Manuel Delivery)',
                                                  value='paymes'),
                                     SelectOption(label='Paypal (Manuel Delivery)',
-                                                value='paypal')
+                                                 value='paypal')
                                 ],
                                 custom_id='cod-select'
                             )
@@ -286,6 +285,8 @@ async def wait():
                         embed = getEmbed('Rust', games.rust_script_paymes)
                     elif selection == 'paypal':
                         embed = getEmbed('Rust', games.rust_script_paypal)
+                        embed.set_footer(
+                            text='[Write your order number after payment]')
                 elif product == 'rust-cheat-select':
                     if selection == 'sellix':
                         embed = getEmbed('Rust', games.rust_cheat_sellix)
@@ -297,6 +298,8 @@ async def wait():
                         embed = getEmbed('Rust', games.rust_cheat_paymes)
                     elif selection == 'paypal':
                         embed = getEmbed('Rust', games.rust_cheat_paypal)
+                        embed.set_footer(
+                            text='[Write your order number after payment]')
                 elif product == 'valo-select':
                     if selection == 'sellix':
                         embed = getEmbed('Valorant', games.valo_weepay)
@@ -308,6 +311,8 @@ async def wait():
                         embed = getEmbed('Valorant', games.valo_paymes)
                     elif selection == 'paypal':
                         embed = getEmbed('Valorant', games.valo_paypal)
+                        embed.set_footer(
+                            text='[Write your order number after payment]')
                 elif product == 'uni-select':
                     if selection == 'sellix':
                         embed = getEmbed('Universal', games.universal_weepay)
@@ -319,17 +324,22 @@ async def wait():
                         embed = getEmbed('Universal', games.universal_paymes)
                     elif selection == 'paypal':
                         embed = getEmbed('Universal', games.universal_paypal)
+                        embed.set_footer(
+                            text='[Write your order number after payment]')
                 elif product == 'r6-select':
                     if selection == 'sellix':
                         embed = getEmbed('Rainbow Six: Siege', games.r6_weepay)
                     elif selection == 'weepay':
                         embed = getEmbed('Rainbow Six: Siege', games.r6_weepay)
                     elif selection == 'payhesap':
-                        embed = getEmbed('Rainbow Six: Siege', games.r6_payhesap)
+                        embed = getEmbed('Rainbow Six: Siege',
+                                         games.r6_payhesap)
                     elif selection == 'paymes':
                         embed = getEmbed('Rainbow Six: Siege', games.r6_paymes)
                     elif selection == 'paypal':
                         embed = getEmbed('Rainbow Six: Siege', games.r6_paypal)
+                        embed.set_footer(
+                            text='[Write your order number after payment]')
                 elif product == 'cod-select':
                     if selection == 'sellix':
                         embed = getEmbed('Cod Warzone', games.warzone_weepay)
@@ -341,7 +351,10 @@ async def wait():
                         embed = getEmbed('Cod Warzone', games.warzone_paymes)
                     elif selection == 'paypal':
                         embed = getEmbed('Cod Warzone', games.warzone_paypal)
+                        embed.set_footer(
+                            text='[Write your order number after payment]')
                 await interaction.respond(embed=embed)
+
 
 @client.event
 async def on_ready():
